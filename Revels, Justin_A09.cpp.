@@ -1,0 +1,94 @@
+/*
+***********************************************************************
+Full Name:       Justin Revels
+Course:          Intro to Programming 1
+Assignment:      Assignment #09
+Semester/Year:   Spring 2026
+Date:            04/07/2026
+
+Description: 
+    This program prompts the user for an uppercase letter and uses a 
+    switch statement to find and display its corresponding word in 
+    the ICAO Phonetic Alphabet.
+
+Input: 
+    - A single uppercase character (char).
+
+Processing: 
+    - A switch statement evaluates the input letter.
+    - Matches the letter to its specific ICAO codeword.
+
+Output: 
+    - The original letter and the corresponding ICAO word.
+***********************************************************************
+*/
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Function Prototype
+void displayICAO(char letter);
+
+int main() {
+    // 1. Declare necessary variables
+    char inputLetter;
+
+    // 2. Ask and Read an input letter (Upper Case)
+    cout << "Enter an uppercase letter (A-Z): ";
+    cin >> inputLetter;
+
+    // 3 & 4. Find and display the corresponding word
+    displayICAO(inputLetter);
+
+    return 0;
+}
+
+/*
+    Function: displayICAO
+    Purpose: Uses a switch statement to map a char to its ICAO word.
+*/
+void displayICAO(char letter) {
+    string word = "";
+
+    // 4. Using a switch statement to find the corresponding word
+    switch (letter) {
+        case 'A': word = "Alpha"; break;
+        case 'B': word = "Bravo"; break;
+        case 'C': word = "Charlie"; break;
+        case 'D': word = "Delta"; break;
+        case 'E': word = "Echo"; break;
+        case 'F': word = "Foxtrot"; break;
+        case 'G': word = "Golf"; break;
+        case 'H': word = "Hotel"; break;
+        case 'I': word = "India"; break;
+        case 'J': word = "Juliett"; break;
+        case 'K': word = "Kilo"; break;
+        case 'L': word = "Lima"; break;
+        case 'M': word = "Mike"; break;
+        case 'N': word = "November"; break;
+        case 'O': word = "Oscar"; break;
+        case 'P': word = "Papa"; break;
+        case 'Q': word = "Quebec"; break;
+        case 'R': word = "Romeo"; break;
+        case 'S': word = "Sierra"; break;
+        case 'T': word = "Tango"; break;
+        case 'U': word = "Uniform"; break;
+        case 'V': word = "Victor"; break;
+        case 'W': word = "Whiskey"; break;
+        case 'X': word = "X-ray"; break;
+        case 'Y': word = "Yankee"; break;
+        case 'Z': word = "Zulu"; break;
+        default:
+            word = "Invalid Input (Please enter an uppercase letter A-Z)";
+            break;
+    }
+
+    // Display the result
+    if (letter >= 'A' && letter <= 'Z') {
+        cout << "The ICAO word for '" << letter << "' is: " << word << endl;
+    } else {
+        cout << word << endl;
+    }
+}
