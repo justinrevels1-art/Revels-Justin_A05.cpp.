@@ -1,0 +1,80 @@
+/*
+***********************************************************************
+Full Name:       Justin Revels
+Course:          Intro to Programming 1
+Assignment:      Assignment #6
+Semester/Year:   Spring 2026
+Date:            04/07/2026
+
+Description: 
+    This program prompts the user to enter 10 decimal numbers. It 
+    calculates the cumulative total of these numbers and determines 
+    their average.
+
+Input: 
+    - Ten individual decimal numbers entered by the user.
+
+Processing: 
+    - Uses a for-loop to iterate exactly 10 times.
+    - Accumulates the sum of the inputs into a total variable.
+    - Divides the final total by the constant count (10) to find the average.
+
+Output: 
+    - Displays the calculated total and the calculated average.
+***********************************************************************
+*/
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+// Function Prototypes
+void processNumbers();
+
+// Global Constants
+const int MAX_INPUTS = 10; // Number of times the program gets input
+
+int main() {
+    // Calling the modular function to handle program logic
+    processNumbers();
+
+    return 0;
+}
+
+/*
+    Function: processNumbers
+    Purpose: Handles user input in a loop, calculates total/average, and displays results.
+*/
+void processNumbers() {
+    // 1. Declares decimal value types for total, average, and user input
+    double total = 0.0;
+    double average = 0.0;
+    double currentInput = 0.0;
+
+    // Set formatting for decimal output
+    cout << fixed << setprecision(2);
+
+    // 3. Repetition structure that runs 10 times
+    for (int i = 1; i <= MAX_INPUTS; i++) {
+        // a) Prompt user for input
+        cout << "(" << i << "/" << MAX_INPUTS << ") Enter a number: ";
+        
+        // b) Read and store the user's inputted value
+        cin >> currentInput;
+
+        // c) Add the value to the total
+        total += currentInput;
+    }
+
+    // 4. Calculate the average after the loop finishes
+    // Dividing the total by the number of inputs (10)
+    average = total / MAX_INPUTS;
+
+    // 5. Display the total and average
+    cout << "\n----------------------------" << endl;
+    cout << "Total of numbers:   " << total << endl;
+    cout << "Average of numbers: " << average << endl;
+    cout << "----------------------------" << endl;
+}
+
