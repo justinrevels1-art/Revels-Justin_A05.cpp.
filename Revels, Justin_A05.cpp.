@@ -1,0 +1,92 @@
+/*
+***********************************************************************
+Full Name:       Justin Revels
+Course:          Intro to Programming 1
+Assignment:      Assignment #5
+Semester/Year:   Spring 2026
+Date:            04/07/2026
+
+Description: 
+    This program calculates the weekly pay for an employee based on 
+    the total hours worked. It accounts for regular hours and overtime 
+    hours using predefined constant rates.
+
+Input: 
+    - Total hours worked per week (user input via keyboard).
+
+Processing: 
+    - Checks if hours worked exceed the 40-hour limit.
+    - Calculates overtime hours (Total Hours - 40).
+    - Calculates regular pay (Regular Hours * 9.50).
+    - Calculates overtime pay (Overtime Hours * 15.00).
+    - Sums regular and overtime pay for the total weekly pay.
+
+Output: 
+    - Displays total hours, overtime hours, regular pay, 
+      overtime pay, and total weekly pay.
+***********************************************************************
+*/
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+// Function Prototypes
+void calculateAndDisplayPay(double totalHours);
+
+// Global Constants
+const double MAX_NORMAL_HOURS = 40.0;
+const double NORMAL_RATE = 9.50;
+const double OVERTIME_RATE = 15.00;
+
+int main() {
+    // Variable to store user input
+    double totalHoursWorked;
+
+    // Set decimal precision for currency output
+    cout << fixed << setprecision(2);
+
+    // Prompt user for input
+    cout << "Enter the total hours worked/week: ";
+    cin >> totalHoursWorked;
+
+    // Call modular function to handle calculations and output
+    calculateAndDisplayPay(totalHoursWorked);
+
+    return 0;
+}
+
+/*
+    Function: calculateAndDisplayPay
+    Purpose: Performs logic to determine overtime and pay amounts, then prints results.
+*/
+void calculateAndDisplayPay(double totalHours) {
+    double overtimeHours = 0.0;
+    double regularHours = 0.0;
+    double regularPay = 0.0;
+    double overtimePay = 0.0;
+    double totalWeeklyPay = 0.0;
+
+    // Logic to determine overtime hours
+    if (totalHours > MAX_NORMAL_HOURS) {
+        overtimeHours = totalHours - MAX_NORMAL_HOURS;
+        regularHours = MAX_NORMAL_HOURS;
+    } else {
+        overtimeHours = 0.0;
+        regularHours = totalHours;
+    }
+
+    // Calculate pay amounts
+    regularPay = regularHours * NORMAL_RATE;
+    overtimePay = overtimeHours * OVERTIME_RATE;
+    totalWeeklyPay = regularPay + overtimePay;
+
+    // Display formatted results
+    cout << "\n--- Weekly Pay Summary ---" << endl;
+    cout << "Total Hours Worked: " << totalHours << endl;
+    cout << "Overtime Hours:     " << overtimeHours << endl;
+    cout << "Regular Pay:       $" << regularPay << endl;
+    cout << "Overtime Pay:      $" << overtimePay << endl;
+    cout << "Total Weekly Pay:  $" << totalWeeklyPay << endl;
+}
